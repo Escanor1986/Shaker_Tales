@@ -21,7 +21,7 @@ export class CocktailContainerComponent implements OnInit, OnDestroy {
         this.cocktails = cocktails;
       })
     );
-    this.subscription.add(
+    this.subscription?.add(
       this.cocktailService.selectedCocktail$.subscribe(
         (selectedCocktail: Cocktail | null) => {
           this.selectedCocktail = selectedCocktail;
@@ -37,6 +37,9 @@ export class CocktailContainerComponent implements OnInit, OnDestroy {
   }
 
   public selectCocktail(index: number): void {
-    this.cocktailService.selectedCocktail(this.cocktails[index]);
+    if (this.cocktails && this.cocktails[index]) {
+      this.cocktailService.selectedCocktail$.next(this.cocktails[index]);
+      console.log('Cocktail sélectionné :', this.cocktails[index]);
+    }
   }
 }

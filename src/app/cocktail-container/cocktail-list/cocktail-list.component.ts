@@ -8,6 +8,7 @@ import { Cocktail } from 'src/app/shared/interfaces/cocktail.interface';
 })
 export class CocktailListComponent implements OnInit {
   @Input() public cocktails!: Cocktail[] | null;
+  @Input() public selectedCocktail!: Cocktail | null;
   @Output() private readonly changeCocktail: EventEmitter<number> =
     new EventEmitter<number>();
 
@@ -17,9 +18,8 @@ export class CocktailListComponent implements OnInit {
     console.log(this.cocktails);
   }
 
-  public selectCocktail(indexCocktail: number | null): void {
-    if (indexCocktail !== null) {
-      console.log(indexCocktail);
+  public selectCocktail(indexCocktail: number): void {
+    if (this.cocktails && this.cocktails[indexCocktail]) {
       this.changeCocktail.emit(indexCocktail);
     }
   }
