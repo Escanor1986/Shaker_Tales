@@ -7,7 +7,7 @@ import { Cocktail } from 'src/app/interfaces/cocktail.interface';
   styleUrls: ['./cocktail-list.component.scss'],
 })
 export class CocktailListComponent implements OnInit {
-  @Input() public cocktails!: Cocktail[];
+  @Input() public cocktails!: Cocktail[] | null;
   @Output() private readonly changeCocktail: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {}
