@@ -83,6 +83,22 @@
             "styles": ["src/styles.scss"],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/Shaker_Tales/",
+            "dir": "dist/cocktails"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "cocktails:build:production"
+            },
+            "development": {
+              "browserTarget": "cocktails:build:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
